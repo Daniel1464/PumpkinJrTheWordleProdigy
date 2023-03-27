@@ -11,6 +11,10 @@ from running import *
 
 from discord.utils import get
 from translate import Translator
+
+runType = 2
+
+
 debug_mode = "off"
 client = commands.Bot(command_prefix="",intents=discord.Intents.all())
 currencybot = commands.Bot(command_prefix="p:",intents=discord.Intents.all())
@@ -127,7 +131,7 @@ async def on_message(message):
           
           ansLetterList = list(data['infiniteWordleWord'][currentServer])
           print(ansLetterList)
-          userLetterList = list(message.content)
+          userLetterList = list(message.content.lower())
           print(userLetterList)
           validationsequence = []
 
@@ -178,7 +182,13 @@ async def on_message(message):
   
     await data_storage_msg.edit(content=str(data))
   
+
+
+
 running()
+
+
+
 try:
   client.run(os.environ['token'])
 except:
